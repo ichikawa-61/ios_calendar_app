@@ -11,4 +11,5 @@
 
 @interface PlanListDataProvider : NSObject<UITableViewDataSource>
 
+@property (nonatomic) NSMutableArray<NSDate*> *timeArray;
 @end

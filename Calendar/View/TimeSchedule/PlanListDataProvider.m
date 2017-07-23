@@ -14,18 +14,21 @@
     return 1;
 }
 
-// セル数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.timeArray.count;
 }
 
-// セルの内容を設定
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // カスタムセルを取得
+    
     ScheduleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ScheduleCell" forIndexPath:indexPath];
     
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
+    formatter.dateFormat = @"HH:mm~";
+    NSString *stringDate = [formatter stringFromDate:[self.timeArray objectAtIndex:indexPath.row]];
     
-    cell.timeLb.text = @"aaaaa";
+    cell.timeLb.text = stringDate;
     
     return cell;
 }

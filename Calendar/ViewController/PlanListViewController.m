@@ -27,28 +27,31 @@
     self.scheduleTableView.delegate = self;
     self.scheduleTableView.dataSource = self.provider;
     
+    [self setTimeLine];
+    
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)setTimeLine{
+
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour|NSCalendarUnitMinute fromDate:self.selectedDate];
     
+    components.hour = 00;
+    components.minute = 00;
     
-   
+    NSDate *timeLineComp = [[NSCalendar currentCalendar] dateFromComponents:components];
+    NSDate *timeComp;
+    self.provider.timeArray = [[NSMutableArray alloc]init];
+    [self.provider.timeArray addObject:timeLineComp];
+    
+    for(int i=0;i<47;i++){
         
+        timeComp = [timeLineComp initWithTimeInterval:30*60 sinceDate:timeLineComp];
+        timeLineComp = timeComp;
+        [self.provider.timeArray addObject:timeComp];
+    }
+    [self.scheduleTableView reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -40,7 +40,6 @@ static NSUInteger const DaysPerWeek = 7;
     
     NSInteger numberOfDaysInMonth = numberOfWeeks * DaysPerWeek;
     
-    NSLog(@"ギギギg%ld",numberOfDaysInMonth);
     NSMutableArray *calendars = [@[] mutableCopy];
     
     
@@ -61,7 +60,6 @@ static NSUInteger const DaysPerWeek = 7;
                                                                          toDate:firstDateOfMonth
                                                                         options:0];
         
-        NSLog(@"nextDate: %@",aDate);
         NSInteger month = [[[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:date] month];
         
         //表示される一覧の月だけを取得->ここで表示される月のうち先月、今月、来月に分かれる
@@ -80,7 +78,6 @@ static NSUInteger const DaysPerWeek = 7;
         
         //今月の日付 = 0 , それ以外の日付 = 1
         self.isDifferentMonth = isDifferentMonth;
-        NSLog(@"isDifferentMonthに値が入った！");
     }
     return self;
 }
