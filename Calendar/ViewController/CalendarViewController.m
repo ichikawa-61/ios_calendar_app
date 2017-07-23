@@ -11,6 +11,7 @@
 #import "CalendarLogic.h"
 #import "NSDate+Calendar.h"
 #import "CalendarViewDataSource.h"
+#import "PlanListViewController.h"
 
 
 
@@ -57,11 +58,6 @@ static CGFloat const CellMargin = 2.0f;
     
 }
 
-
-
-
-
-
 #pragma mark - UICollectionViewDelegate methods
 
 
@@ -91,22 +87,18 @@ static CGFloat const CellMargin = 2.0f;
 }
 
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    NSLog(@"didSelectItemAtIndexPath:通過しました");
-//    if (self.calendarLogic.isDifferentMonth){
-//         NSLog(@"選択したのは%d",self.calendarLogic.isDifferentMonth);
-//    }
-//
-//}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     self.calendarLogic = self.calendarViewDataSource.calendars[indexPath.row];
-    // 0 or 1
-    if (self.calendarLogic.isDifferentMonth){
+    
+    // 該当月の日付なら画面遷移
+    if (!self.calendarLogic.isDifferentMonth){
         
-        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PlanList" bundle:[NSBundle mainBundle]];
+                
+        PlanListViewController *secondVC = [storyboard instantiateInitialViewController];
+        secondVC.selectedDate = self.calendarLogic.aDate;
+        [self.navigationController pushViewController:secondVC animated:true];
     }
 
 }
