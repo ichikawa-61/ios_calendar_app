@@ -23,6 +23,9 @@
 		38F6E0C21E9F35BF00DD8BF4 /* NSDate+Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F6E0C11E9F35BF00DD8BF4 /* NSDate+Calendar.m */; };
 		38FE7DB41F2469CB00AF2CB1 /* PlanListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DB31F2469CB00AF2CB1 /* PlanListViewController.m */; };
 		38FE7DBB1F246A1100AF2CB1 /* PlanList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38FE7DB91F246A1100AF2CB1 /* PlanList.storyboard */; };
+		38FE7DC21F24740000AF2CB1 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DC01F24740000AF2CB1 /* ScheduleCell.m */; };
+		38FE7DC31F24740000AF2CB1 /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38FE7DC11F24740000AF2CB1 /* ScheduleCell.xib */; };
+		38FE7DC91F24774500AF2CB1 /* PlanListDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DC81F24774500AF2CB1 /* PlanListDataProvider.m */; };
 		8BD5337F26FF74A100E8B58D /* libPods-CalendarTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31040BC15C029C17D0FF20B0 /* libPods-CalendarTests.a */; };
 		A2F4415592DA13129E581350 /* libPods-CalendarUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008003FA0BCCE342C134F4E7 /* libPods-CalendarUITests.a */; };
 		E29BFC19D86064F6DA8B96EA /* libPods-Calendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC99779227A118F911D611E /* libPods-Calendar.a */; };
@@ -78,6 +81,11 @@
 		38FE7DB21F2469CB00AF2CB1 /* PlanListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanListViewController.h; sourceTree = "<group>"; };
 		38FE7DB31F2469CB00AF2CB1 /* PlanListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanListViewController.m; sourceTree = "<group>"; };
 		38FE7DBA1F246A1100AF2CB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Calendar/Storyboard/Base.lproj/PlanList.storyboard; sourceTree = SOURCE_ROOT; };
+		38FE7DBF1F24740000AF2CB1 /* ScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCell.h; sourceTree = "<group>"; };
+		38FE7DC01F24740000AF2CB1 /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCell.m; sourceTree = "<group>"; };
+		38FE7DC11F24740000AF2CB1 /* ScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
+		38FE7DC71F24774500AF2CB1 /* PlanListDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanListDataProvider.h; sourceTree = "<group>"; };
+		38FE7DC81F24774500AF2CB1 /* PlanListDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanListDataProvider.m; sourceTree = "<group>"; };
 		48D9AD9D82A2CE275C0626E8 /* Pods-CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarTests/Pods-CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 		6262B737E4F5CF59EBCB8AC2 /* Pods-CalendarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarUITests/Pods-CalendarUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B9601B6C737A0C4FE6655FD6 /* Pods-Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calendar/Pods-Calendar.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,11 +146,9 @@
 		38AFB3571EA8B8F80023387A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				38F6E0B11E9D1CBE00DD8BF4 /* CalendarViewDataSource.h */,
-				38F6E0B21E9D1CBE00DD8BF4 /* CalendarViewDataSource.m */,
-				38AFB65B1E9B0C7A005EB3B5 /* DayCell.h */,
-				38AFB65C1E9B0C7A005EB3B5 /* DayCell.m */,
-				38AFB65D1E9B0C7A005EB3B5 /* DayCell.xib */,
+				38FE7DC61F2475B700AF2CB1 /* PlanSetting */,
+				38FE7DC51F2475A400AF2CB1 /* TimeSchedule */,
+				38FE7DC41F24758300AF2CB1 /* Calendar */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +245,37 @@
 				38AFB6651E9C3690005EB3B5 /* CalendarLogic.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		38FE7DC41F24758300AF2CB1 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				38F6E0B11E9D1CBE00DD8BF4 /* CalendarViewDataSource.h */,
+				38F6E0B21E9D1CBE00DD8BF4 /* CalendarViewDataSource.m */,
+				38AFB65B1E9B0C7A005EB3B5 /* DayCell.h */,
+				38AFB65C1E9B0C7A005EB3B5 /* DayCell.m */,
+				38AFB65D1E9B0C7A005EB3B5 /* DayCell.xib */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		38FE7DC51F2475A400AF2CB1 /* TimeSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				38FE7DBF1F24740000AF2CB1 /* ScheduleCell.h */,
+				38FE7DC01F24740000AF2CB1 /* ScheduleCell.m */,
+				38FE7DC11F24740000AF2CB1 /* ScheduleCell.xib */,
+				38FE7DC71F24774500AF2CB1 /* PlanListDataProvider.h */,
+				38FE7DC81F24774500AF2CB1 /* PlanListDataProvider.m */,
+			);
+			path = TimeSchedule;
+			sourceTree = "<group>";
+		};
+		38FE7DC61F2475B700AF2CB1 /* PlanSetting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PlanSetting;
 			sourceTree = "<group>";
 		};
 		4EC979E798BF3A83E6E943E7 /* Pods */ = {
@@ -382,6 +419,7 @@
 			files = (
 				38AFB6381E9B0A8C005EB3B5 /* LaunchScreen.storyboard in Resources */,
 				38AFB6351E9B0A8C005EB3B5 /* Assets.xcassets in Resources */,
+				38FE7DC31F24740000AF2CB1 /* ScheduleCell.xib in Resources */,
 				38AFB65F1E9B0C7A005EB3B5 /* DayCell.xib in Resources */,
 				38FE7DBB1F246A1100AF2CB1 /* PlanList.storyboard in Resources */,
 				38AFB6331E9B0A8C005EB3B5 /* Main.storyboard in Resources */,
@@ -551,10 +589,12 @@
 				38AFB6301E9B0A8C005EB3B5 /* CalendarViewController.m in Sources */,
 				38F6E0C21E9F35BF00DD8BF4 /* NSDate+Calendar.m in Sources */,
 				38AFB62D1E9B0A8C005EB3B5 /* AppDelegate.m in Sources */,
+				38FE7DC91F24774500AF2CB1 /* PlanListDataProvider.m in Sources */,
 				38F6E0BF1E9F355400DD8BF4 /* NSString+Localizable.m in Sources */,
 				38F6E0B31E9D1CBE00DD8BF4 /* CalendarViewDataSource.m in Sources */,
 				38AFB65E1E9B0C7A005EB3B5 /* DayCell.m in Sources */,
 				38AFB6661E9C3690005EB3B5 /* CalendarLogic.m in Sources */,
+				38FE7DC21F24740000AF2CB1 /* ScheduleCell.m in Sources */,
 				38AFB62A1E9B0A8C005EB3B5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

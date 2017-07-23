@@ -7,22 +7,34 @@
 //
 
 #import "PlanListViewController.h"
+#import "PlanListDataProvider.h"
 
-@interface PlanListViewController ()
+@interface PlanListViewController ()<UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *scheduleTableView;
+@property (nonatomic) PlanListDataProvider *provider;
 @end
 
 @implementation PlanListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
+    UINib *nib = [UINib nibWithNibName:@"ScheduleCell" bundle:nil];
+    [self.scheduleTableView registerNib:nib forCellReuseIdentifier:@"ScheduleCell"];
+    
+    self.provider = [[PlanListDataProvider alloc]init];
+    self.scheduleTableView.delegate = self;
+    self.scheduleTableView.dataSource = self.provider;
     
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     
-    }
+    
+   
+        
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
