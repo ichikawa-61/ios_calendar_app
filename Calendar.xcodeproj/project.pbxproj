@@ -29,6 +29,8 @@
 		38FE7DD41F248A7100AF2CB1 /* TimeLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DD31F248A7100AF2CB1 /* TimeLogic.m */; };
 		38FE7DD81F248E6900AF2CB1 /* ScheduleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DD71F248E6900AF2CB1 /* ScheduleManager.m */; };
 		38FE7DDB1F248EC800AF2CB1 /* Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DDA1F248EC800AF2CB1 /* Plan.m */; };
+		38FE7DDE1F2495DA00AF2CB1 /* PlanSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DDD1F2495DA00AF2CB1 /* PlanSettingViewController.m */; };
+		38FE7DE11F2495F300AF2CB1 /* PlanSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38FE7DDF1F2495F300AF2CB1 /* PlanSetting.storyboard */; };
 		8BD5337F26FF74A100E8B58D /* libPods-CalendarTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31040BC15C029C17D0FF20B0 /* libPods-CalendarTests.a */; };
 		A2F4415592DA13129E581350 /* libPods-CalendarUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008003FA0BCCE342C134F4E7 /* libPods-CalendarUITests.a */; };
 		E29BFC19D86064F6DA8B96EA /* libPods-Calendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC99779227A118F911D611E /* libPods-Calendar.a */; };
@@ -95,6 +97,9 @@
 		38FE7DD71F248E6900AF2CB1 /* ScheduleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleManager.m; path = SQL/ScheduleManager.m; sourceTree = "<group>"; };
 		38FE7DD91F248EC800AF2CB1 /* Plan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan.h; sourceTree = "<group>"; };
 		38FE7DDA1F248EC800AF2CB1 /* Plan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan.m; sourceTree = "<group>"; };
+		38FE7DDC1F2495DA00AF2CB1 /* PlanSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanSettingViewController.h; sourceTree = "<group>"; };
+		38FE7DDD1F2495DA00AF2CB1 /* PlanSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanSettingViewController.m; sourceTree = "<group>"; };
+		38FE7DE01F2495F300AF2CB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PlanSetting.storyboard; sourceTree = "<group>"; };
 		48D9AD9D82A2CE275C0626E8 /* Pods-CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarTests/Pods-CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 		6262B737E4F5CF59EBCB8AC2 /* Pods-CalendarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarUITests/Pods-CalendarUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B9601B6C737A0C4FE6655FD6 /* Pods-Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calendar/Pods-Calendar.debug.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +142,7 @@
 			children = (
 				38FE7DB91F246A1100AF2CB1 /* PlanList.storyboard */,
 				38AFB6311E9B0A8C005EB3B5 /* Main.storyboard */,
+				38FE7DDF1F2495F300AF2CB1 /* PlanSetting.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -144,6 +150,8 @@
 		38AFB3561EA8B8E70023387A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				38FE7DDC1F2495DA00AF2CB1 /* PlanSettingViewController.h */,
+				38FE7DDD1F2495DA00AF2CB1 /* PlanSettingViewController.m */,
 				38AFB62E1E9B0A8C005EB3B5 /* CalendarViewController.h */,
 				38AFB62F1E9B0A8C005EB3B5 /* CalendarViewController.m */,
 				38FE7DB21F2469CB00AF2CB1 /* PlanListViewController.h */,
@@ -441,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38AFB6381E9B0A8C005EB3B5 /* LaunchScreen.storyboard in Resources */,
+				38FE7DE11F2495F300AF2CB1 /* PlanSetting.storyboard in Resources */,
 				38AFB6351E9B0A8C005EB3B5 /* Assets.xcassets in Resources */,
 				38FE7DD11F2485D500AF2CB1 /* ScheduleCell.xib in Resources */,
 				38AFB65F1E9B0C7A005EB3B5 /* DayCell.xib in Resources */,
@@ -621,6 +630,7 @@
 				38FE7DDB1F248EC800AF2CB1 /* Plan.m in Sources */,
 				38AFB6661E9C3690005EB3B5 /* CalendarLogic.m in Sources */,
 				38AFB62A1E9B0A8C005EB3B5 /* main.m in Sources */,
+				38FE7DDE1F2495DA00AF2CB1 /* PlanSettingViewController.m in Sources */,
 				38FE7DD01F2485D500AF2CB1 /* ScheduleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,6 +692,14 @@
 			);
 			name = PlanList.storyboard;
 			path = ../Category;
+			sourceTree = "<group>";
+		};
+		38FE7DDF1F2495F300AF2CB1 /* PlanSetting.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38FE7DE01F2495F300AF2CB1 /* Base */,
+			);
+			name = PlanSetting.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

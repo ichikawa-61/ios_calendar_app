@@ -7,6 +7,7 @@
 //
 
 #import "PlanListViewController.h"
+#import "PlanSettingViewController.h"
 #import "PlanListDataProvider.h"
 #import "TimeLogic.h"
 
@@ -28,15 +29,33 @@
     self.scheduleTableView.delegate = self;
     self.scheduleTableView.dataSource = self.provider;
     
+   
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
     TimeLogic *logic = [[TimeLogic alloc]init];
     self.provider.timeArray = [[NSMutableArray alloc]init];
     NSDate *theDate = self.selectedDate;
-    self.provider.timeArray = [logic setTimeLine:(NSDate*)theDate];
+    NSMutableArray *array =  [[NSMutableArray alloc]init];
+    array = [logic setTimeLine:(NSDate*)theDate];
+    self.provider.timeArray = array;
 }
-
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 65;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [self.scheduleTableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PlanSetting" bundle:[NSBundle mainBundle]];
+    
+    PlanSettingViewController *thirdVC = [storyboard instantiateInitialViewController];
+    [self.navigationController pushViewController:thirdVC animated:true];
+
+
 }
 
 
