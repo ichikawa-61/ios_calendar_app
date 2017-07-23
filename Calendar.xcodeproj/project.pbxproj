@@ -26,6 +26,9 @@
 		38FE7DCF1F2485D500AF2CB1 /* PlanListDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DCB1F2485D500AF2CB1 /* PlanListDataProvider.m */; };
 		38FE7DD01F2485D500AF2CB1 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DCD1F2485D500AF2CB1 /* ScheduleCell.m */; };
 		38FE7DD11F2485D500AF2CB1 /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38FE7DCE1F2485D500AF2CB1 /* ScheduleCell.xib */; };
+		38FE7DD41F248A7100AF2CB1 /* TimeLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DD31F248A7100AF2CB1 /* TimeLogic.m */; };
+		38FE7DD81F248E6900AF2CB1 /* ScheduleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DD71F248E6900AF2CB1 /* ScheduleManager.m */; };
+		38FE7DDB1F248EC800AF2CB1 /* Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FE7DDA1F248EC800AF2CB1 /* Plan.m */; };
 		8BD5337F26FF74A100E8B58D /* libPods-CalendarTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31040BC15C029C17D0FF20B0 /* libPods-CalendarTests.a */; };
 		A2F4415592DA13129E581350 /* libPods-CalendarUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008003FA0BCCE342C134F4E7 /* libPods-CalendarUITests.a */; };
 		E29BFC19D86064F6DA8B96EA /* libPods-Calendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC99779227A118F911D611E /* libPods-Calendar.a */; };
@@ -86,6 +89,12 @@
 		38FE7DCC1F2485D500AF2CB1 /* ScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCell.h; sourceTree = "<group>"; };
 		38FE7DCD1F2485D500AF2CB1 /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCell.m; sourceTree = "<group>"; };
 		38FE7DCE1F2485D500AF2CB1 /* ScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
+		38FE7DD21F248A7100AF2CB1 /* TimeLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLogic.h; sourceTree = "<group>"; };
+		38FE7DD31F248A7100AF2CB1 /* TimeLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLogic.m; sourceTree = "<group>"; };
+		38FE7DD61F248E6900AF2CB1 /* ScheduleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleManager.h; path = SQL/ScheduleManager.h; sourceTree = "<group>"; };
+		38FE7DD71F248E6900AF2CB1 /* ScheduleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleManager.m; path = SQL/ScheduleManager.m; sourceTree = "<group>"; };
+		38FE7DD91F248EC800AF2CB1 /* Plan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan.h; sourceTree = "<group>"; };
+		38FE7DDA1F248EC800AF2CB1 /* Plan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan.m; sourceTree = "<group>"; };
 		48D9AD9D82A2CE275C0626E8 /* Pods-CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarTests/Pods-CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 		6262B737E4F5CF59EBCB8AC2 /* Pods-CalendarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarUITests/Pods-CalendarUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B9601B6C737A0C4FE6655FD6 /* Pods-Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calendar/Pods-Calendar.debug.xcconfig"; sourceTree = "<group>"; };
@@ -241,8 +250,13 @@
 		38AFB66A1E9C758C005EB3B5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				38FE7DDA1F248EC800AF2CB1 /* Plan.m */,
+				38FE7DD91F248EC800AF2CB1 /* Plan.h */,
+				38FE7DD51F248A7B00AF2CB1 /* SQL */,
 				38AFB6641E9C3690005EB3B5 /* CalendarLogic.h */,
 				38AFB6651E9C3690005EB3B5 /* CalendarLogic.m */,
+				38FE7DD21F248A7100AF2CB1 /* TimeLogic.h */,
+				38FE7DD31F248A7100AF2CB1 /* TimeLogic.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -276,6 +290,15 @@
 			children = (
 			);
 			name = PlanSetting;
+			sourceTree = "<group>";
+		};
+		38FE7DD51F248A7B00AF2CB1 /* SQL */ = {
+			isa = PBXGroup;
+			children = (
+				38FE7DD61F248E6900AF2CB1 /* ScheduleManager.h */,
+				38FE7DD71F248E6900AF2CB1 /* ScheduleManager.m */,
+			);
+			name = SQL;
 			sourceTree = "<group>";
 		};
 		4EC979E798BF3A83E6E943E7 /* Pods */ = {
@@ -592,7 +615,10 @@
 				38F6E0BF1E9F355400DD8BF4 /* NSString+Localizable.m in Sources */,
 				38FE7DCF1F2485D500AF2CB1 /* PlanListDataProvider.m in Sources */,
 				38F6E0B31E9D1CBE00DD8BF4 /* CalendarViewDataSource.m in Sources */,
+				38FE7DD41F248A7100AF2CB1 /* TimeLogic.m in Sources */,
 				38AFB65E1E9B0C7A005EB3B5 /* DayCell.m in Sources */,
+				38FE7DD81F248E6900AF2CB1 /* ScheduleManager.m in Sources */,
+				38FE7DDB1F248EC800AF2CB1 /* Plan.m in Sources */,
 				38AFB6661E9C3690005EB3B5 /* CalendarLogic.m in Sources */,
 				38AFB62A1E9B0A8C005EB3B5 /* main.m in Sources */,
 				38FE7DD01F2485D500AF2CB1 /* ScheduleCell.m in Sources */,

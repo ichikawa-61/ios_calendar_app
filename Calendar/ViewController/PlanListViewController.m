@@ -8,6 +8,7 @@
 
 #import "PlanListViewController.h"
 #import "PlanListDataProvider.h"
+#import "TimeLogic.h"
 
 @interface PlanListViewController ()<UITableViewDelegate>
 
@@ -27,31 +28,16 @@
     self.scheduleTableView.delegate = self;
     self.scheduleTableView.dataSource = self.provider;
     
-    [self setTimeLine];
-    
-}
-
--(void)setTimeLine{
-
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour|NSCalendarUnitMinute fromDate:self.selectedDate];
-    
-    components.hour = 00;
-    components.minute = 00;
-    
-    NSDate *timeLineComp = [[NSCalendar currentCalendar] dateFromComponents:components];
-    NSDate *timeComp;
+    TimeLogic *logic = [[TimeLogic alloc]init];
     self.provider.timeArray = [[NSMutableArray alloc]init];
-    [self.provider.timeArray addObject:timeLineComp];
-    
-    for(int i=0;i<47;i++){
-        
-        timeComp = [timeLineComp initWithTimeInterval:30*60 sinceDate:timeLineComp];
-        timeLineComp = timeComp;
-        [self.provider.timeArray addObject:timeComp];
-    }
-    [self.scheduleTableView reloadData];
+    NSDate *theDate = self.selectedDate;
+    self.provider.timeArray = [logic setTimeLine:(NSDate*)theDate];
 }
 
+
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 65;
+}
 
 
 @end
