@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Plan.h"
 @interface ScheduleManager : NSObject
 
+-(id)init;
+-(void)addNewPlan:(Plan*)plan;
+-(NSMutableArray<Plan*>*)showMemoList:(NSInteger)planId;
 @end

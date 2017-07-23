@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *scheduleTableView;
 @property (nonatomic) PlanListDataProvider *provider;
+
 @end
 
 @implementation PlanListViewController
@@ -29,18 +30,14 @@
     self.scheduleTableView.delegate = self;
     self.scheduleTableView.dataSource = self.provider;
     
-   
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    
     TimeLogic *logic = [[TimeLogic alloc]init];
     self.provider.timeArray = [[NSMutableArray alloc]init];
     NSDate *theDate = self.selectedDate;
     NSMutableArray *array =  [[NSMutableArray alloc]init];
-    array = [logic setTimeLine:(NSDate*)theDate];
+    array = [logic setTimeLine:theDate];
     self.provider.timeArray = array;
 }
+
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 65;
@@ -51,8 +48,15 @@
     [self.scheduleTableView deselectRowAtIndexPath:indexPath animated:YES];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PlanSetting" bundle:[NSBundle mainBundle]];
-    
     PlanSettingViewController *thirdVC = [storyboard instantiateInitialViewController];
+    NSArray *times = [self.provider.timeArray copy];
+    NSDate *date = [NSDate new];
+    date = [times objectAtIndex:indexPath.row];
+    // = thirdVC.selectedHour;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.dateFormat = @"YYYY/MM/dd HH:mm";
+    NSString *stringTime = [formatter stringFromDate:[times objectAtIndex:indexPath.row]];
+    thirdVC.selectedHour = stringTime;
     [self.navigationController pushViewController:thirdVC animated:true];
 
 

@@ -1,5 +1,5 @@
 //
-//  PlanSettingViewController.h
+//  DetailCell.h
 //  Calendar
 //
 //  Created by Manami Ichikawa on 7/23/17.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlanSettingViewController : UIViewController
-@property (nonatomic) NSString* selectedHour;
+@interface DetailCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UITextView *detailLb;
+
 @end

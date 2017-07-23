@@ -39,7 +39,7 @@
     return [dir stringByAppendingPathComponent:@"plan.db"];
 }
 
--(void)addNewMemo:(Plan*)plan{
+-(void)addNewPlan:(Plan*)plan{
     
     NSString *title      = plan.planTitle;
     NSDate *startDate    = plan.startTime;
