@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import"CalendarLogic.h"
 
 @interface TimeLogic : NSObject
+@property NSDate *theDate;
 
--(NSMutableArray<NSDate *>*)setTimeLine:(NSDate*)selectedDate;
+-(NSMutableArray<NSDate *>*)setTimeLine:(CalendarLogic*)selectedDate;
 @end

@@ -97,7 +97,8 @@ static CGFloat const CellMargin = 2.0f;
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PlanList" bundle:[NSBundle mainBundle]];
                 
         PlanListViewController *secondVC = [storyboard instantiateInitialViewController];
-        secondVC.selectedDate = self.calendarLogic.aDate;
+       
+        secondVC.selectedDate = self.calendarLogic;
         [self.navigationController pushViewController:secondVC animated:true];
     }
 

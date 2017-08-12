@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CalendarLogic.h"
 
 @interface PlanSettingViewController : UIViewController
-@property (nonatomic) NSString* selectedHour;
+//@property (nonatomic) NSString* selectedHour;
+@property (nonatomic) CalendarLogic *selectedHour;
 @end

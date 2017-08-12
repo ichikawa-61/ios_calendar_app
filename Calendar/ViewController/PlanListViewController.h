@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CalendarLogic.h"
 
 @interface PlanListViewController : UIViewController
 
-@property (nonatomic) NSDate* selectedDate;
+@property (nonatomic) CalendarLogic *selectedDate;
 
 @end

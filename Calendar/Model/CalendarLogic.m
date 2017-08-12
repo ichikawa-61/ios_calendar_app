@@ -22,7 +22,6 @@ static NSUInteger const DaysPerWeek = 7;
     
     return today;
     
-    
 }
 
 +(NSArray<CalendarLogic *> *)calendarWithDate:(NSDate *)date{
@@ -70,7 +69,6 @@ static NSUInteger const DaysPerWeek = 7;
     
     return calendars;
 }
-
 
 - (instancetype)initWithDate:(NSDate *)date isDifferentMonth:(BOOL)isDifferentMonth {
     if (self = [super init]) {

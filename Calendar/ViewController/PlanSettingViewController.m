@@ -33,14 +33,24 @@
     UINib *nib3 = [UINib nibWithNibName:@"DetailCell" bundle:nil];
     [self.settingTableView registerNib:nib3 forCellReuseIdentifier:@"DetailCell"];
     
+    UIBarButtonItem* addButton = [[UIBarButtonItem alloc]
+                                  initWithTitle:@"登録"
+                                  style:UIBarButtonItemStylePlain
+                                  target:self
+                                  action:@selector(tapAddButton)];
+    self.navigationItem.rightBarButtonItems = @[addButton];
+
     self.itemProvider = [[PlanDataProvider alloc]init];
     self.settingTableView.delegate = self;
     self.settingTableView.dataSource = self.itemProvider;
-    
+
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    formatter.dateFormat = @"YYYY/MM/dd HH:mm";
-    NSDate *date = [formatter dateFromString:self.selectedHour];
-    date = self.itemProvider.chosenDate;
+    formatter.dateFormat = @"YYYY/MM/dd";
+    NSString *navTitle = [formatter stringFromDate: self.selectedHour.aDate];
+    self.navigationController.title = [NSString stringWithFormat:@"%@",navTitle];
+    
+    NSDate *date = self.selectedHour.aDate;
+    self.itemProvider.chosenDate = date;
 }
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,11 +67,16 @@
     
 }
 
-- (IBAction)tapResisterButton:(id)sender {
+-(void)tapAddButton{
+
     ScheduleManager *manager = [[ScheduleManager alloc]init];
     Plan *plan = [[Plan alloc]init];
     
     [self checkText];
+}
+
+- (IBAction)tapResisterButton:(id)sender {
+    
     
 }
 @end

@@ -35,28 +35,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1f-er-pet">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="k7b-3j-1Dt">
-                                        <barButtonItem key="rightBarButtonItem" title="登録" id="upd-cv-f2c">
-                                            <connections>
-                                                <action selector="tapResisterButton:" destination="0zH-xU-hq0" id="mJ4-SH-Ilm"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="69Y-2c-J6M" firstAttribute="top" secondItem="Axk-sc-8Mz" secondAttribute="top" id="7Dg-TA-YNL"/>
                             <constraint firstItem="69Y-2c-J6M" firstAttribute="leading" secondItem="Axk-sc-8Mz" secondAttribute="leading" id="Ry5-Jt-uek"/>
                             <constraint firstItem="3cg-F0-WRR" firstAttribute="top" secondItem="69Y-2c-J6M" secondAttribute="bottom" id="Tot-H6-SmZ"/>
-                            <constraint firstAttribute="trailing" secondItem="a1f-er-pet" secondAttribute="trailing" id="Uca-sN-m5p"/>
-                            <constraint firstItem="a1f-er-pet" firstAttribute="top" secondItem="Axk-sc-8Mz" secondAttribute="top" id="cQQ-G8-o8h"/>
                             <constraint firstAttribute="trailing" secondItem="69Y-2c-J6M" secondAttribute="trailing" id="iB8-Nx-2Tl"/>
-                            <constraint firstItem="a1f-er-pet" firstAttribute="leading" secondItem="Axk-sc-8Mz" secondAttribute="leading" id="xVj-cm-tEc"/>
                         </constraints>
                     </view>
                     <connections>

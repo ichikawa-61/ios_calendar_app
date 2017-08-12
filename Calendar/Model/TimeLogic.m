@@ -10,9 +10,9 @@
 
 @implementation TimeLogic
 
--(NSMutableArray<NSDate *>*)setTimeLine:(NSDate*)selectedDate{
+-(NSMutableArray<NSDate *>*)setTimeLine:(CalendarLogic*)selectedDate{
     
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour|NSCalendarUnitMinute fromDate:selectedDate];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate:selectedDate.aDate];
     
     components.hour = 00;
     components.minute = 00;
@@ -28,8 +28,7 @@
         timeLineComp = timeComp;
         [timeList addObject:timeComp];
     }
-    //[self.scheduleTableView reloadData];
-    
+        
     return timeList;
 }
 

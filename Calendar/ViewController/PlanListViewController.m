@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *scheduleTableView;
 @property (nonatomic) PlanListDataProvider *provider;
+@property (nonatomic) TimeLogic *logic;
 
 @end
 
@@ -30,12 +31,19 @@
     self.scheduleTableView.delegate = self;
     self.scheduleTableView.dataSource = self.provider;
     
-    TimeLogic *logic = [[TimeLogic alloc]init];
+    self.logic = [[TimeLogic alloc]init];
     self.provider.timeArray = [[NSMutableArray alloc]init];
-    NSDate *theDate = self.selectedDate;
+    
     NSMutableArray *array =  [[NSMutableArray alloc]init];
-    array = [logic setTimeLine:theDate];
+    array = [self.logic setTimeLine:self.selectedDate];
     self.provider.timeArray = array;
+    
+    UIBarButtonItem* addButton = [[UIBarButtonItem alloc]
+                                  initWithTitle:@"<戻る"
+                                  style:UIBarButtonItemStylePlain
+                                  target:self
+                                  action:@selector(tapGoBackButton)];
+    self.navigationItem.leftBarButtonItems = @[addButton];
 }
 
 
@@ -49,17 +57,19 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PlanSetting" bundle:[NSBundle mainBundle]];
     PlanSettingViewController *thirdVC = [storyboard instantiateInitialViewController];
-    NSArray *times = [self.provider.timeArray copy];
-    NSDate *date = [NSDate new];
-    date = [times objectAtIndex:indexPath.row];
-    // = thirdVC.selectedHour;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    formatter.dateFormat = @"YYYY/MM/dd HH:mm";
-    NSString *stringTime = [formatter stringFromDate:[times objectAtIndex:indexPath.row]];
-    thirdVC.selectedHour = stringTime;
+    //thirdVC.selectedHour.aDate =
+    
+    thirdVC.selectedHour = [[CalendarLogic alloc]init];
+    thirdVC.selectedHour.aDate = [self.provider.timeArray objectAtIndex:indexPath.row];
+    
     [self.navigationController pushViewController:thirdVC animated:true];
 
 
+}
+
+-(void)tapGoBackButton{
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
