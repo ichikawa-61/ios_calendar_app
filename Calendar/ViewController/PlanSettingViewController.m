@@ -12,7 +12,6 @@
 #import "DayCell.h"
 #import "DayCell.h"
 #import "PlanDataProvider.h"
-#import "DatePickerView.h"
 //Model
 #import "ScheduleManager.h"
 #import "Plan.h"
@@ -23,7 +22,7 @@
 @interface PlanSettingViewController ()<UITableViewDelegate,PlanDataProviderDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *settingTableView;
 @property (nonatomic) PlanDataProvider *itemProvider;
-@property (nonatomic,strong) DatePickerView *datePickerView;
+@property (nonatomic,strong) UIDatePicker *dp;
 @property (nonatomic,strong) Plan *plan;
 - (IBAction)tapResisterButton:(id)sender;
 
@@ -40,11 +39,29 @@
     UINib *nib3 = [UINib nibWithNibName:@"DetailCell" bundle:nil];
     [self.settingTableView registerNib:nib3 forCellReuseIdentifier:@"DetailCell"];
     
-//     self.datePickerView = [[NSBundle mainBundle] loadNibNamed:@"DatePickerView" owner:self options:nil][0];
+    self.dp = [[UIDatePicker alloc]init];
     
-    [self.view addSubview:self.datePickerView];
-    self.datePickerView.hidden = YES;
+    CGSize boundsSize = self.view.bounds.size;
+    self.dp.center = CGPointMake( boundsSize.width / 2, boundsSize.height /1.2 );
+    self.dp.minuteInterval = 30;
+    NSDateFormatter *dateFormatter =[[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss +0900";
     
+    //選択できるの日付・時刻の範囲を指定
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate:self.selectedHour.aDate];
+    
+    components.hour = 23;
+    components.minute = 30;
+
+    NSDate *maxDate = [[NSCalendar currentCalendar] dateFromComponents:components];
+    self.dp.minimumDate = self.selectedHour.aDate;
+    self.dp.maximumDate = maxDate;
+    [self.dp addTarget:self
+                action:@selector(changeDate)
+      forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:self.dp];
+ 
+    self.dp.hidden = YES;
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc]
                                   initWithTitle:@"登録"
                                   style:UIBarButtonItemStylePlain
@@ -67,6 +84,7 @@
     
     }
 
+#pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == DETAIL_SECTION){
         return 200;
@@ -93,7 +111,7 @@
 -(void)startEditingTextfield{
     
     [self customizeDatePickerView];
-    self.datePickerView.hidden = NO;
+    self.dp.hidden = NO;
 }
 
 -(void)tapAddButton{
@@ -105,6 +123,10 @@
     [self checkText];
 }
 
+-(void)changeDate{
+
+
+}
 
 //Validation check
 -(void)checkText{
@@ -146,7 +168,7 @@
 
 -(void)customizeDatePickerView{
 
-self.datePickerView.datePicker.minuteInterval = 30;
+//self.datePickerView.datePicker.minuteInterval = 30;
 }
 
 - (IBAction)tapResisterButton:(id)sender {

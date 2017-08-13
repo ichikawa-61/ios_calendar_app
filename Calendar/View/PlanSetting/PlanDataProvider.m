@@ -103,7 +103,8 @@
         
         if ([self.delegate respondsToSelector:@selector(startEditingTextfield)])
         {
-            [self.delegate startEditingTextfield];
+            [textField resignFirstResponder];
+             [self.delegate startEditingTextfield];
         }
         return NO;
     }

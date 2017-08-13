@@ -10,12 +10,11 @@
 
 @implementation DatePickerView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
++ (instancetype)dateView
+{
+    UINib *nib = [UINib nibWithNibName:@"DatePickerView" bundle:nil];
+    DatePickerView *view = [nib instantiateWithOwner:self options:nil][0];
+    return view;
+    
 }
-*/
-
 @end

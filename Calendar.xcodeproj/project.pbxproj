@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38010EB41F3F353A00213BC1 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38010EB31F3F353A00213BC1 /* DatePickerView.xib */; };
-		38010EB71F3F8BAC00213BC1 /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38010EB61F3F8BAC00213BC1 /* DatePickerView.m */; };
 		38010EBB1F3FF13400213BC1 /* AlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38010EBA1F3FF13400213BC1 /* AlertController.m */; };
 		3850CEC91F249FDB00306700 /* PlanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3850CEC71F249FDB00306700 /* PlanCell.m */; };
 		3850CECA1F249FDB00306700 /* PlanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3850CEC81F249FDB00306700 /* PlanCell.xib */; };
@@ -67,9 +65,6 @@
 		008003FA0BCCE342C134F4E7 /* libPods-CalendarUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CalendarUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31040BC15C029C17D0FF20B0 /* libPods-CalendarTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CalendarTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38010EAD1F3F1E9300213BC1 /* StringDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringDefinition.h; sourceTree = "<group>"; };
-		38010EB31F3F353A00213BC1 /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DatePickerView.xib; path = DatePicker/DatePickerView.xib; sourceTree = "<group>"; };
-		38010EB51F3F8BAC00213BC1 /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerView.h; path = DatePicker/DatePickerView.h; sourceTree = "<group>"; };
-		38010EB61F3F8BAC00213BC1 /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerView.m; path = DatePicker/DatePickerView.m; sourceTree = "<group>"; };
 		38010EB91F3FF13400213BC1 /* AlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertController.h; path = Util/AlertController.h; sourceTree = "<group>"; };
 		38010EBA1F3FF13400213BC1 /* AlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertController.m; path = Util/AlertController.m; sourceTree = "<group>"; };
 		3850CEC61F249FDB00306700 /* PlanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlanCell.h; path = PlanSetting/PlanCell.h; sourceTree = "<group>"; };
@@ -164,16 +159,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		38010EAE1F3F329E00213BC1 /* DatePicker */ = {
-			isa = PBXGroup;
-			children = (
-				38010EB31F3F353A00213BC1 /* DatePickerView.xib */,
-				38010EB51F3F8BAC00213BC1 /* DatePickerView.h */,
-				38010EB61F3F8BAC00213BC1 /* DatePickerView.m */,
-			);
-			name = DatePicker;
-			sourceTree = "<group>";
-		};
 		38010EB81F3FF08E00213BC1 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,7 +194,6 @@
 		38AFB3571EA8B8F80023387A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				38010EAE1F3F329E00213BC1 /* DatePicker */,
 				38FE7DC41F24758300AF2CB1 /* Calendar */,
 				38FE7DC61F2475B700AF2CB1 /* PlanSetting */,
 				38FE7DC51F2475A400AF2CB1 /* TimeSchedule */,
@@ -518,7 +502,6 @@
 				38AFB65F1E9B0C7A005EB3B5 /* DayCell.xib in Resources */,
 				38FE7DBB1F246A1100AF2CB1 /* PlanList.storyboard in Resources */,
 				38AFB6331E9B0A8C005EB3B5 /* Main.storyboard in Resources */,
-				38010EB41F3F353A00213BC1 /* DatePickerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,7 +675,6 @@
 				38FE7DCF1F2485D500AF2CB1 /* PlanListDataProvider.m in Sources */,
 				38F6E0B31E9D1CBE00DD8BF4 /* CalendarViewDataSource.m in Sources */,
 				38FE7DD41F248A7100AF2CB1 /* TimeLogic.m in Sources */,
-				38010EB71F3F8BAC00213BC1 /* DatePickerView.m in Sources */,
 				38AFB65E1E9B0C7A005EB3B5 /* DayCell.m in Sources */,
 				38FE7DD81F248E6900AF2CB1 /* ScheduleManager.m in Sources */,
 				38FE7DDB1F248EC800AF2CB1 /* Plan.m in Sources */,

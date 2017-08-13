@@ -11,4 +11,6 @@
 @interface DatePickerView : UIView
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
++ (instancetype)dateView;
+
 @end
