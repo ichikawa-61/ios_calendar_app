@@ -8,10 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "Plan.h"
+
+@protocol PlanDataProviderDelegate <NSObject>
+
+@optional
+-(void)startEditingTextfield;
+
+@end
 
 @interface PlanDataProvider : NSObject<UITableViewDataSource>
 
 @property (nonatomic) NSDate *chosenDate;
+@property (strong, nonatomic) Plan *plan;
+@property(nonatomic, weak) id<PlanDataProviderDelegate> delegate;
 typedef NS_ENUM(NSInteger, PlanDataProviderSection) {
     
     TITLE_PLACE_SECTION,

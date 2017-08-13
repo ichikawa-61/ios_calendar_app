@@ -8,13 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Plan.h"
-@protocol PlanCellDelegate
 
-@optional
--(Plan*)didFinishInputPlan;
-@end
 @interface PlanCell : UITableViewCell
-
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
 @end

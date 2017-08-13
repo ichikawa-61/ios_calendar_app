@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.detailLb.delegate = self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -20,5 +21,12 @@
 
     // Configure the view for the selected state
 }
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+
+    return YES;
+}
+
+
 
 @end

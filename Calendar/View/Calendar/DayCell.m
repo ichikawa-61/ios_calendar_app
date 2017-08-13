@@ -12,19 +12,6 @@
 
 @interface DayCell()
 
-//typedef NS_ENUM(NSInteger, DaysOfTheWeek){
-//    
-//    Saturday,
-//    Sunday,
-//    Monday,
-//    Tuesday,
-//    Wednesday,
-//    Thursday,
-//    Friday
-//    
-//};
-
-
 @end
 
 @implementation DayCell

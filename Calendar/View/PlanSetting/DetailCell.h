@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailCell : UITableViewCell
+@interface DetailCell : UITableViewCell<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *detailLb;
 
 @end
