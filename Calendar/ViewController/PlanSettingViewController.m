@@ -69,6 +69,14 @@
                                   target:self
                                   action:@selector(tapAddButton)];
     self.navigationItem.rightBarButtonItems = @[addButton];
+    
+    UIBarButtonItem* backButton = [[UIBarButtonItem alloc]
+                                  initWithTitle:@"<戻る"
+                                  style:UIBarButtonItemStylePlain
+                                  target:self
+                                  action:@selector(tapGoingBackButton)];
+    self.navigationItem.leftBarButtonItems = @[backButton];
+
 
     self.itemProvider = [[PlanDataProvider alloc]init];
     self.settingTableView.delegate = self;
@@ -115,6 +123,9 @@
     self.dp.hidden = NO;
 }
 
+-(void)tapGoingBackButton{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)tapAddButton{
     
     //ScheduleManager *manager = [[ScheduleManager alloc]init];
@@ -127,6 +138,7 @@
         ScheduleManager *manager = [[ScheduleManager alloc]init];
         [manager addNewPlan:self.plan];
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)changeDate{
@@ -172,7 +184,7 @@
                            actionFunc:^(UIAlertAction *alertAction){
                            }
          ];
-        return NO;
+        return YES;
     }
     return YES;
 }

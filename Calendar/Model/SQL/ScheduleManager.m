@@ -23,7 +23,7 @@
     if(self){
         FMDatabase* db = [self getConnection];
         [db open];
-        NSString *sql = @"CREATE TABLE IF NOT EXISTS  t_plan(plan_id INTEGER PRIMARY KEY AUTOINCREMENT, plan_title TEXT, place TEXT, start_date DATE, end_date DATE, detail TEXT); ";
+        NSString *sql = @"CREATE TABLE IF NOT EXISTS  t_plan(plan_id INTEGER PRIMARY KEY AUTOINCREMENT, plan_title TEXT, place TEXT, start_date INTEGER, end_date INTEGER, detail TEXT); ";
         [db executeUpdate:sql];
         [db close];
     }
@@ -61,20 +61,20 @@
     
 }
 
--(NSMutableArray<Plan*>*)showMemoList:(NSInteger)planId{
+-(NSMutableArray<Plan*>*)showPlanList{
     
     FMDatabase *db = [self getConnection];
-    NSString *sqlite = @"SELECT* FROM t_plan WHERE plan_id = ?";
+    NSString *sqlite = @"SELECT* FROM t_plan";
     [db open];
-    FMResultSet* results = [db executeQuery:sqlite,planId];
+    FMResultSet* results = [db executeQuery:sqlite];
     NSMutableArray *list = [[NSMutableArray alloc] initWithCapacity:0];
     while ([results next]){
         Plan* plan = [[Plan alloc] init];
         
         plan.planId       = [results intForColumn:@"plan_id"];
         plan.planTitle    = [results stringForColumn:@"plan_title"];
-        plan.startTime    = [results dateForColumn:@"start_time"];
-        plan.startTime    = [results dateForColumn:@"end_time"];
+        plan.startTime    = [results dateForColumn:@"start_date"];
+        plan.endTime      = [results dateForColumn:@"end_date"];
         plan.place        = [results stringForColumn:@"place"];
         plan.detail       = [results stringForColumn:@"detail"];
         

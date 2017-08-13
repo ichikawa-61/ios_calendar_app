@@ -6,12 +6,20 @@
 //  Copyright © 2017 Manami Ichikawa. All rights reserved.
 //
 
+//ViewController
 #import "CalendarViewController.h"
-#import "DayCell.h"
-#import "CalendarLogic.h"
-#import "NSDate+Calendar.h"
-#import "CalendarViewDataSource.h"
 #import "PlanListViewController.h"
+//View
+#import "DayCell.h"
+#import "CalendarViewDataSource.h"
+//Model
+#import "CalendarLogic.h"
+#import "ScheduleManager.h"
+#import "Plan.h"
+//Category
+#import "NSDate+Calendar.h"
+
+
 
 
 
@@ -36,9 +44,9 @@
 static NSUInteger const DaysPerWeek = 7;
 static CGFloat const CellMargin = 2.0f;
 
+# pragma mark - hierarchy
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     self.aDate  = [NSDate date];
     
@@ -58,6 +66,18 @@ static CGFloat const CellMargin = 2.0f;
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+//    ScheduleManager *manager = [[ScheduleManager alloc]init];
+//    NSMutableArray<Plan*> *plans = [[NSMutableArray alloc]init];
+//    plans = [manager showPlanList];
+//    NSMutableArray<NSDate*> *dateOfPlans = [[NSMutableArray alloc]init];
+//    
+    //for (plan in plans){
+    
+    
+    
+}
+
 #pragma mark - UICollectionViewDelegate methods
 
 
@@ -66,8 +86,11 @@ static CGFloat const CellMargin = 2.0f;
 {
     NSInteger numberOfMargin = 8;
     CGFloat width = floorf((collectionView.frame.size.width - CellMargin * numberOfMargin) / DaysPerWeek);
-    CGFloat height = width ;
-    
+    if(indexPath.section == 0){
+        CGFloat height = width ;
+        return CGSizeMake(width, height);
+    }
+    CGFloat height = width*1.5 ;
     return CGSizeMake(width, height);
 }
 
@@ -104,6 +127,7 @@ static CGFloat const CellMargin = 2.0f;
 
 }
 
+#pragma mark - private method
 - (IBAction)goToNextMonth:(id)sender {
     
     self.aDate = [self.aDate monthLaterDate];

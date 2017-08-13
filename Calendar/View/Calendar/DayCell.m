@@ -38,10 +38,7 @@
 
 
 
--(void)setUpDaysOfWeek:(NSInteger)row{
-    //NSString *test = [self.monthName objectAtIndex:row];
-    
-   // NSLog(@"ええええええ%@",test);
+-(void)setUpDaysOfWeek:(NSInteger)row{   
     self.dayLabel.text = [self.monthName objectAtIndex:row] ;
     
     switch (row) {
@@ -60,29 +57,39 @@
 }
 
 
-
 -(void)setUpWithCalendar:(CalendarLogic*)calendarLogic Row:(NSInteger)row{
     
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = @"d";
     
     self.dayLabel.text = [calendarLogic.aDate dateStringWithFormat:formatter.dateFormat];
+   // self.planLabel.text = [calendarLogic.aDate compareDate];
     if (calendarLogic.isDifferentMonth) {
         self.dayLabel.textColor = [UIColor lightGrayColor];
         return;
     }
+    if (calendarLogic.isAnyPlans){
+        self.planLabel.text = @"●";
+        
+    }else{
+        self.planLabel.text = @"";
+    }
+    
     
     switch (row%7) {
         case Sunday:
             self.dayLabel.textColor = [UIColor redColor];
+            self.planLabel.textColor = [UIColor redColor];
             break;
             
         case Saturday:
             self.dayLabel.textColor = [UIColor blueColor];
+            self.planLabel.textColor = [UIColor blueColor];
             break;
             
         default:
             self.dayLabel.textColor = [UIColor blackColor];
+            self.planLabel.textColor = [UIColor blackColor];
             break;
     }
 

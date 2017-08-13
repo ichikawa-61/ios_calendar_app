@@ -14,6 +14,7 @@
 @property (nonatomic) NSString *planTitle;
 @property (nonatomic) NSDate *startTime;
 @property (nonatomic) NSDate *endTime;
+@property (nonatomic) NSString *strStartTime;
 @property (nonatomic) NSString *strEndTime;
 @property (nonatomic) NSString *place;
 @property (nonatomic) NSString *detail;

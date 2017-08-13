@@ -11,14 +11,6 @@
 @implementation NSDate (Calendar)
 
 
-//- (DaysOfTheWeek)weekdayType {
-//    NSCalendar *calendar = [NSCalendar currentCalendar];
-//    NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitWeekday
-//                                               fromDate:self];
-//    return [components weekday];
-//}
-
-
 
 -(NSString *)dateStringWithFormat:(NSString *)format{
 

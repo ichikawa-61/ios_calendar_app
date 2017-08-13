@@ -7,13 +7,11 @@
 //
 
 #import "CalendarLogic.h"
-
-
+#import "ScheduleManager.h"
 
 @implementation CalendarLogic
 
 static NSUInteger const DaysPerWeek = 7;
-
 -(NSDate*)getThisMonth{
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -46,7 +44,22 @@ static NSUInteger const DaysPerWeek = 7;
     NSInteger restOfTheLastMonth = [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitDay
                                                                            inUnit:NSCalendarUnitWeekOfMonth
                                                                           forDate:firstDateOfMonth];
-    
+    ScheduleManager *manager = [[ScheduleManager alloc]init];
+    NSMutableArray<Plan*> *plans = [[NSMutableArray alloc]init];
+    plans = [manager showPlanList];
+//    NSMutableArray<NSDate*> *dateOfPlans = [[NSMutableArray alloc]init];
+
+    NSMutableArray<NSString*>*recordedDate = [[NSMutableArray alloc]init];
+    //Plan *plan = [[Plan alloc]init];
+    for(Plan *plan in plans){
+        
+        
+        NSDateFormatter *df =[[NSDateFormatter alloc] init];
+        df.dateFormat = @"yyyy/MM/dd ";
+        NSString *strDate = [df stringFromDate:plan.startTime];
+        
+        [recordedDate addObject:strDate];
+    }
     
     for (NSInteger i = 0; i < numberOfDaysInMonth; i++) {
         
@@ -58,26 +71,40 @@ static NSUInteger const DaysPerWeek = 7;
         NSDate *aDate = [[NSCalendar currentCalendar] dateByAddingComponents:nextComponents
                                                                          toDate:firstDateOfMonth
                                                                         options:0];
-        
+        NSDateFormatter *formatter =[[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy/MM/dd ";
+        NSString *strDate = [formatter stringFromDate:aDate];
+
+        BOOL isAnyPlans = [self compareDateToDesplayedDate:recordedDate Desplay:strDate];
         NSInteger month = [[[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:date] month];
+        
+        
         
         //表示される一覧の月だけを取得->ここで表示される月のうち先月、今月、来月に分かれる
         NSInteger monthOfTheDate = [[[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:aDate] month];
         
-                [calendars addObject:[[CalendarLogic alloc] initWithDate:aDate isDifferentMonth:month != monthOfTheDate]];
+        [calendars addObject:[[CalendarLogic alloc] initWithDate:aDate isDifferentMonth:month != monthOfTheDate AnyPlans:isAnyPlans]];
     }
     
     return calendars;
 }
 
-- (instancetype)initWithDate:(NSDate *)date isDifferentMonth:(BOOL)isDifferentMonth {
+- (instancetype)initWithDate:(NSDate *)date isDifferentMonth:(BOOL)isDifferentMonth AnyPlans:(BOOL)isAnyPlans{
     if (self = [super init]) {
         self.aDate = date;
         
         //今月の日付 = 0 , それ以外の日付 = 1
         self.isDifferentMonth = isDifferentMonth;
+        self.isAnyPlans = isAnyPlans;
     }
     return self;
+}
+
++ (BOOL)compareDateToDesplayedDate:(NSMutableArray<NSString*>*)recordedDate Desplay:(NSString*)strDate{
+    
+    BOOL isContains = [recordedDate containsObject:strDate];
+
+    return isContains;
 }
     
     

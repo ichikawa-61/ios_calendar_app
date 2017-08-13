@@ -8,6 +8,7 @@
 
 #import "CalendarViewDataSource.h"
 #import "CalendarLogic.h"
+#import "ScheduleManager.h"
 
 @implementation CalendarViewDataSource
 
@@ -41,8 +42,10 @@ static NSUInteger const DaysPerWeek = 7;
             
             CalendarLogic *calendarLogic = self.calendars[indexPath.row];
            
-            [cell setUpWithCalendar:calendarLogic Row:indexPath.row];
+            [cell
+             setUpWithCalendar:calendarLogic Row:indexPath.row];
         
+           // [cell putSignToRemind:indexPath.row];
             return cell;
         }
            

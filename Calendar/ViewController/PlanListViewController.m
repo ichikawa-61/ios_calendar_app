@@ -5,17 +5,22 @@
 //  Created by Manami Ichikawa on 7/23/17.
 //  Copyright © 2017 Manami Ichikawa. All rights reserved.
 //
-
+//ViewController
 #import "PlanListViewController.h"
 #import "PlanSettingViewController.h"
+//View
 #import "PlanListDataProvider.h"
+//Model
 #import "TimeLogic.h"
+#import "ScheduleManager.h"
+#import "Plan.h"
 
 @interface PlanListViewController ()<UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *scheduleTableView;
 @property (nonatomic) PlanListDataProvider *provider;
 @property (nonatomic) TimeLogic *logic;
+@property (strong, nonatomic) Plan *plan;
 
 @end
 
@@ -44,8 +49,15 @@
                                   target:self
                                   action:@selector(tapGoBackButton)];
     self.navigationItem.leftBarButtonItems = @[addButton];
-}
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"]];
 
+    formatter.dateFormat = @"YYYY年MM月dd日 E曜日";
+    NSString *strDate = [formatter stringFromDate: self.selectedDate.aDate];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@",strDate];
+    
+}
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 65;

@@ -10,11 +10,14 @@
 #import "CalendarLogic.h"
 @interface DayCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *planLabel;
+
 @property (strong, nonatomic) NSArray *monthName;
 
 -(void)setUpWithCalendar:(CalendarLogic*)calendarLogic Row:(NSInteger)row;
 -(void)setUpDaysOfWeek:(NSInteger)row;
 -(void)getWeekOfDays;
+-(void)putSignToRemind:(NSInteger)row;
 
 
 @end

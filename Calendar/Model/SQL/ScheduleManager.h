@@ -12,5 +12,5 @@
 
 -(id)init;
 -(void)addNewPlan:(Plan*)plan;
--(NSMutableArray<Plan*>*)showMemoList:(NSInteger)planId;
+-(NSMutableArray<Plan*>*)showPlanList;
 @end

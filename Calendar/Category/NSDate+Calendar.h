@@ -32,9 +32,6 @@ typedef NS_ENUM(NSInteger, DaysOfTheWeek){
 -(NSDate *)monthAgoDate;
 -(NSDate *)monthLaterDate;
 -(NSString *)dateStringWithFormat:(NSString *)format;
-//-(NSArray*)weekdayType;
-
-//-(DaysOfTheWeek)weekdayType;
 
 
 
