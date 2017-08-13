@@ -14,11 +14,10 @@
 
 @optional
 -(void)startEditingTextfield;
-
 @end
 
 @interface PlanDataProvider : NSObject<UITableViewDataSource>
-
+-(void)setEndTime:(NSDate*)endDate;
 @property (nonatomic) NSDate *chosenDate;
 @property (strong, nonatomic) Plan *plan;
 @property(nonatomic, weak) id<PlanDataProviderDelegate> delegate;

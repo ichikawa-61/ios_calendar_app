@@ -143,9 +143,7 @@
 
 -(void)changeDate{
 
-//    NSDateFormatter *df = [[NSDateFormatter alloc]init];
-//    df.dateFormat = @"yyyy/MM/dd HH:mm";
-//    NSString *pickerDate = [df stringFromDate:self.dp.date];
+    [self.itemProvider setEndTime:self.dp.date];
     self.endDate = self.dp.date;
 }
 
@@ -176,16 +174,16 @@
         return NO;
     }
     
-    if([self.plan.strEndTime length] == 0){
-        
-        [AlertController validateText:self
-                          titleString:EndTimeEmpty
-                        messageString:@""
-                           actionFunc:^(UIAlertAction *alertAction){
-                           }
-         ];
-        return YES;
-    }
+//    if([self.plan.strEndTime length] == 0){
+//        
+//        [AlertController validateText:self
+//                          titleString:EndTimeEmpty
+//                        messageString:@""
+//                           actionFunc:^(UIAlertAction *alertAction){
+//                           }
+//         ];
+//        return NO;
+//    }
     return YES;
 }
 

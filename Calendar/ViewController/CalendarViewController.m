@@ -67,15 +67,8 @@ static CGFloat const CellMargin = 2.0f;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-//    ScheduleManager *manager = [[ScheduleManager alloc]init];
-//    NSMutableArray<Plan*> *plans = [[NSMutableArray alloc]init];
-//    plans = [manager showPlanList];
-//    NSMutableArray<NSDate*> *dateOfPlans = [[NSMutableArray alloc]init];
-//    
-    //for (plan in plans){
     
-    
-    
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDelegate methods

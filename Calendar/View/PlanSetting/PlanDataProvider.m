@@ -12,6 +12,7 @@
 #import "TimeCell.h"
 
 @interface PlanDataProvider()<UITextFieldDelegate>
+@property (nonatomic) UITextField *textfield;
 @end
 
 @implementation PlanDataProvider
@@ -101,22 +102,15 @@
     NSInteger textfieldTag = textField.tag;
     if (textfieldTag == 3){
         
+        self.textfield = [[UITextField alloc]init];
+        self.textfield = textField;
         if ([self.delegate respondsToSelector:@selector(startEditingTextfield)])
         {
             [textField resignFirstResponder];
              [self.delegate startEditingTextfield];
         }
         return NO;
-    }
-    return YES;
-}
-
-
--(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-
-    [textField resignFirstResponder];
-    NSInteger textfieldTag = textField.tag;
-    if(textfieldTag == 1){
+    }else if(textfieldTag == 1){
         self.plan.planTitle = textField.text;
     }else if(textfieldTag == 2){
         self.plan.place = textField.text;
@@ -125,6 +119,25 @@
     }
     self.plan.startTime = self.chosenDate;
     return YES;
+
+    return YES;
+}
+
+
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+
+    [textField resignFirstResponder];
+
+    return YES;
+}
+
+-(void)setEndTime:(NSDate*)endDate{
+
+    NSDateFormatter *df =[[NSDateFormatter alloc] init];
+    df.dateFormat = @"yyyy/MM/dd HH:mm~ ";
+    NSString *strDate = [df stringFromDate:endDate];
+
+    self.textfield.text = strDate;
 }
 
 
