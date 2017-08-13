@@ -51,7 +51,7 @@
     [db open];
     [db beginTransaction];
     
-    NSString *sql = @"INSERT INTO t_plan (plan_title, start_time, end_time, place, detail) VALUES (?,?,?,?,?)";
+    NSString *sql = @"INSERT INTO t_plan (plan_title, start_date, end_date, place, detail) VALUES (?,?,?,?,?)";
     
     BOOL t = [db executeUpdate:sql,title,startDate,endDate,place,detail];
     NSLog(@"%d",t);

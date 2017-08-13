@@ -123,6 +123,7 @@
     }else{
         self.plan.strEndTime = textField.text;
     }
+    self.plan.startTime = self.chosenDate;
     return YES;
 }
 

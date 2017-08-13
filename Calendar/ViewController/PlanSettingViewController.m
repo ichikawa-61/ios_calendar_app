@@ -24,6 +24,7 @@
 @property (nonatomic) PlanDataProvider *itemProvider;
 @property (nonatomic,strong) UIDatePicker *dp;
 @property (nonatomic,strong) Plan *plan;
+@property (nonatomic,strong) NSDate *endDate;
 - (IBAction)tapResisterButton:(id)sender;
 
 @end
@@ -119,17 +120,25 @@
     //ScheduleManager *manager = [[ScheduleManager alloc]init];
     self.plan = [[Plan alloc]init];
     self.plan = self.itemProvider.plan;
-    
-    [self checkText];
+    self.plan.endTime = self.endDate;
+    self.plan.startTime = self.itemProvider.chosenDate;
+    BOOL didFillText = [self checkText];
+    if (didFillText){
+        ScheduleManager *manager = [[ScheduleManager alloc]init];
+        [manager addNewPlan:self.plan];
+    }
 }
 
 -(void)changeDate{
 
-
+//    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+//    df.dateFormat = @"yyyy/MM/dd HH:mm";
+//    NSString *pickerDate = [df stringFromDate:self.dp.date];
+    self.endDate = self.dp.date;
 }
 
 //Validation check
--(void)checkText{
+-(BOOL)checkText{
     
     if([self.plan.planTitle length] == 0 && [self.plan.strEndTime length] == 0){
     
@@ -137,9 +146,10 @@
                           titleString:TitleEndTimeEmpty
                         messageString:@""
                            actionFunc:^(UIAlertAction *alertAction){
-                               return;
                            }
          ];
+        
+        return NO;
     }
     
     if([self.plan.planTitle length] == 0){
@@ -148,9 +158,10 @@
                           titleString:TitleEmpty
                         messageString:@""
                            actionFunc:^(UIAlertAction *alertAction){
-                               return;
                            }
         ];
+        
+        return NO;
     }
     
     if([self.plan.strEndTime length] == 0){
@@ -159,11 +170,11 @@
                           titleString:EndTimeEmpty
                         messageString:@""
                            actionFunc:^(UIAlertAction *alertAction){
-                               return;
                            }
          ];
+        return NO;
     }
-
+    return YES;
 }
 
 -(void)customizeDatePickerView{
