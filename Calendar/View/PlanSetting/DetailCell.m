@@ -22,11 +22,4 @@
     // Configure the view for the selected state
 }
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-
-    return YES;
-}
-
-
-
 @end

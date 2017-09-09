@@ -11,13 +11,15 @@
 #import "DetailCell.h"
 #import "TimeCell.h"
 
-@interface PlanDataProvider()<UITextFieldDelegate>
+@interface PlanDataProvider()<UITextFieldDelegate,UITextViewDelegate>
 @property (nonatomic) UITextField *textfield;
+@property (strong, nonatomic)UITextView *textView;
 @end
 
 @implementation PlanDataProvider
 
 #pragma mark - UITableViewDataSource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     self.plan = [[Plan alloc]init];
     return NUMBER_OF_SECTION;
@@ -83,6 +85,11 @@
         switch (indexPath.row) {
             case START_TIME:{
                 DetailCell *cellType5 = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
+                CGRect rect = [[UIScreen mainScreen] bounds];
+                UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width,200)];
+                textView.delegate = self;
+                textView.editable = YES;
+                [cellType5.contentView addSubview:textView];
                 return cellType5;
             }
         }break;
@@ -92,6 +99,7 @@
 }
 
 #pragma mark - UITextFieldDelegate
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
@@ -106,30 +114,53 @@
         self.textfield = textField;
         if ([self.delegate respondsToSelector:@selector(startEditingTextfield)])
         {
-            [textField resignFirstResponder];
              [self.delegate startEditingTextfield];
         }
+        [self.textView resignFirstResponder];
+        [textField resignFirstResponder];
         return NO;
-    }else if(textfieldTag == 1){
+    }
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+
+    [textField addTarget:self action:@selector(textFieldEditingChanged:) forControlEvents:UIControlEventEditingChanged];
+}
+
+-(void)textFieldEditingChanged :(id)sender{
+    UITextField *textField = (UITextField *)sender;
+    
+    NSInteger textfieldTag = textField.tag;
+    if(textfieldTag == TEXT_TITLE){
         self.plan.planTitle = textField.text;
-    }else if(textfieldTag == 2){
+    }else if(textfieldTag == TEXT_PLACE){
         self.plan.place = textField.text;
-    }else{
+    }else if(textfieldTag == TEXT_END_TIME){
         self.plan.strEndTime = textField.text;
     }
     self.plan.startTime = self.chosenDate;
-    return YES;
-
-    return YES;
+    
 }
 
 
--(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+-(void)textFieldDidEndEditing:(UITextField *)textField{
 
     [textField resignFirstResponder];
-
-    return YES;
 }
+
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChangeSelection:(UITextView *)textView{
+    self.textView = textView;
+    self.plan.detail = textView.text;
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView{
+    [textView resignFirstResponder];
+}
+
+#pragma mark - privateMethod
 
 -(void)setEndTime:(NSDate*)endDate{
 
@@ -138,6 +169,7 @@
     NSString *strDate = [df stringFromDate:endDate];
 
     self.textfield.text = strDate;
+    self.plan.strEndTime = strDate;
 }
 
 

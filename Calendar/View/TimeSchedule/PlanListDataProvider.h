@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "Hour.h"
 
 @interface PlanListDataProvider : NSObject<UITableViewDataSource>
 
-@property (nonatomic) NSMutableArray<NSDate*> *timeArray;
+@property (nonatomic) NSMutableArray<Hour*> *timeArray;
 @end

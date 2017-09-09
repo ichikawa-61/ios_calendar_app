@@ -13,4 +13,6 @@
 -(id)init;
 -(void)addNewPlan:(Plan*)plan;
 -(NSMutableArray<Plan*>*)showPlanList;
+-(Plan*)showThePlan:(NSDate*)date;
+
 @end

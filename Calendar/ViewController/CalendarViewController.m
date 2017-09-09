@@ -48,6 +48,14 @@ static CGFloat const CellMargin = 2.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    UINib *nib = [UINib nibWithNibName:@"DayCell" bundle:nil];
+    [self.collectionView registerNib:nib forCellWithReuseIdentifier:@"Cell"];
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     self.aDate  = [NSDate date];
     
     self.calendarViewDataSource = [[CalendarViewDataSource alloc] initWithCalendars:[CalendarLogic calendarWithDate:self.aDate]];
@@ -59,14 +67,7 @@ static CGFloat const CellMargin = 2.0f;
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = @"MM月YYYY年";
     self.navigationItem.title = [self.aDate dateStringWithFormat:formatter.dateFormat];
-    
-    UINib *nib = [UINib nibWithNibName:@"DayCell" bundle:nil];
-    [self.collectionView registerNib:nib forCellWithReuseIdentifier:@"Cell"];
-    
-    
-}
 
--(void)viewWillAppear:(BOOL)animated{
     
     [self.collectionView reloadData];
 }

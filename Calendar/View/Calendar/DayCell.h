@@ -17,7 +17,5 @@
 -(void)setUpWithCalendar:(CalendarLogic*)calendarLogic Row:(NSInteger)row;
 -(void)setUpDaysOfWeek:(NSInteger)row;
 -(void)getWeekOfDays;
--(void)putSignToRemind:(NSInteger)row;
-
 
 @end

@@ -23,9 +23,6 @@ static NSUInteger const DaysPerWeek = 7;
     return self;
 }
 
-
-
-
 -(DayCell *)dateForCellAtIndexPath :(UICollectionView*)collectionView IndexPath:(NSIndexPath *)indexPath Section:(NSInteger)section{
     
     DayCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
@@ -55,17 +52,12 @@ static NSUInteger const DaysPerWeek = 7;
 }
 
 
-
-
-
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
     return CalendarViewNumberOfSecssion;
 }
-
-
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -78,11 +70,8 @@ static NSUInteger const DaysPerWeek = 7;
 
 }
 
-
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
             return [self dateForCellAtIndexPath:collectionView IndexPath:indexPath Section:indexPath.section];
 }
 

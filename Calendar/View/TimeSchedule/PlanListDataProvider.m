@@ -8,6 +8,7 @@
 
 #import "PlanListDataProvider.h"
 #import "ScheduleCell.h"
+
 @implementation PlanListDataProvider
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -21,16 +22,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    Hour *hour = [[Hour alloc]init];
     ScheduleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ScheduleCell" forIndexPath:indexPath];
     
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
     formatter.dateFormat = @"HH:mm~";
-    NSString *stringDate = [formatter stringFromDate:[self.timeArray objectAtIndex:indexPath.row]];
-    
+    hour = [self.timeArray objectAtIndex:indexPath.row];
+    NSLog(@"indexPath.row =%ld ",indexPath.row);
+    if(hour.isAvailabel){
+        cell.backgroundColor = [UIColor cyanColor];
+    }else{
+        
+    /* メモ: セルが再利用され、スクロール時に色がついたセルが不本意な箇所に再び登場するため、この処理追加　*/
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+
+    NSString *stringDate = [formatter stringFromDate:hour.anHour];
     cell.timeLb.text = stringDate;
-    
-    return cell;
+        return cell;
 }
 
 

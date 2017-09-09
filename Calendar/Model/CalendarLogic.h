@@ -13,7 +13,7 @@
 @interface CalendarLogic : NSObject
 @property (strong,nonatomic) NSDate *aDate;
 @property (assign, nonatomic) BOOL isDifferentMonth;
-@property (assign, nonatomic) BOOL isAnyPlans;
+@property (assign, nonatomic) BOOL AreAnyPlans;
 
 
 + (NSArray<CalendarLogic*> *)calendarWithDate:(NSDate *)date;

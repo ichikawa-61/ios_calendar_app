@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		38010EBB1F3FF13400213BC1 /* AlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38010EBA1F3FF13400213BC1 /* AlertController.m */; };
+		381DDEFA1F5EEC8A008883B8 /* Hour.m in Sources */ = {isa = PBXBuildFile; fileRef = 381DDEF91F5EEC8A008883B8 /* Hour.m */; };
 		3850CEC91F249FDB00306700 /* PlanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3850CEC71F249FDB00306700 /* PlanCell.m */; };
 		3850CECA1F249FDB00306700 /* PlanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3850CEC81F249FDB00306700 /* PlanCell.xib */; };
 		3850CECD1F24A18D00306700 /* PlanDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3850CECC1F24A18D00306700 /* PlanDataProvider.m */; };
@@ -67,6 +68,8 @@
 		38010EAD1F3F1E9300213BC1 /* StringDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringDefinition.h; sourceTree = "<group>"; };
 		38010EB91F3FF13400213BC1 /* AlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertController.h; path = Util/AlertController.h; sourceTree = "<group>"; };
 		38010EBA1F3FF13400213BC1 /* AlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertController.m; path = Util/AlertController.m; sourceTree = "<group>"; };
+		381DDEF81F5EEC8A008883B8 /* Hour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hour.h; sourceTree = "<group>"; };
+		381DDEF91F5EEC8A008883B8 /* Hour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hour.m; sourceTree = "<group>"; };
 		3850CEC61F249FDB00306700 /* PlanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlanCell.h; path = PlanSetting/PlanCell.h; sourceTree = "<group>"; };
 		3850CEC71F249FDB00306700 /* PlanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlanCell.m; path = PlanSetting/PlanCell.m; sourceTree = "<group>"; };
 		3850CEC81F249FDB00306700 /* PlanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlanCell.xib; path = PlanSetting/PlanCell.xib; sourceTree = "<group>"; };
@@ -298,6 +301,8 @@
 				38AFB6651E9C3690005EB3B5 /* CalendarLogic.m */,
 				38FE7DD21F248A7100AF2CB1 /* TimeLogic.h */,
 				38FE7DD31F248A7100AF2CB1 /* TimeLogic.m */,
+				381DDEF81F5EEC8A008883B8 /* Hour.h */,
+				381DDEF91F5EEC8A008883B8 /* Hour.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -679,6 +684,7 @@
 				38FE7DD81F248E6900AF2CB1 /* ScheduleManager.m in Sources */,
 				38FE7DDB1F248EC800AF2CB1 /* Plan.m in Sources */,
 				3850CECD1F24A18D00306700 /* PlanDataProvider.m in Sources */,
+				381DDEFA1F5EEC8A008883B8 /* Hour.m in Sources */,
 				38AFB6661E9C3690005EB3B5 /* CalendarLogic.m in Sources */,
 				3850CED11F24B3EC00306700 /* TimeCell.m in Sources */,
 				38AFB62A1E9B0A8C005EB3B5 /* main.m in Sources */,

@@ -47,23 +47,18 @@ static NSUInteger const DaysPerWeek = 7;
     ScheduleManager *manager = [[ScheduleManager alloc]init];
     NSMutableArray<Plan*> *plans = [[NSMutableArray alloc]init];
     plans = [manager showPlanList];
-//    NSMutableArray<NSDate*> *dateOfPlans = [[NSMutableArray alloc]init];
-
     NSMutableArray<NSString*>*recordedDate = [[NSMutableArray alloc]init];
-    //Plan *plan = [[Plan alloc]init];
     for(Plan *plan in plans){
-        
         
         NSDateFormatter *df =[[NSDateFormatter alloc] init];
         df.dateFormat = @"yyyy/MM/dd ";
-        NSString *strDate = [df stringFromDate:plan.startTime];
+        NSString *stringDate = [df stringFromDate:plan.startTime];
         
-        [recordedDate addObject:strDate];
+        [recordedDate addObject:stringDate];
     }
     
     for (NSInteger i = 0; i < numberOfDaysInMonth; i++) {
-        
-        
+                
         NSDateComponents *nextComponents = [[NSDateComponents alloc]init];
         nextComponents.day = i - (restOfTheLastMonth - 1);
         
@@ -75,7 +70,7 @@ static NSUInteger const DaysPerWeek = 7;
         formatter.dateFormat = @"yyyy/MM/dd ";
         NSString *strDate = [formatter stringFromDate:aDate];
 
-        BOOL isAnyPlans = [self compareDateToDesplayedDate:recordedDate Desplay:strDate];
+        BOOL AreAnyPlans = [self compareDateToDesplayedDate:recordedDate Desplay:strDate];
         NSInteger month = [[[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:date] month];
         
         
@@ -83,19 +78,19 @@ static NSUInteger const DaysPerWeek = 7;
         //表示される一覧の月だけを取得->ここで表示される月のうち先月、今月、来月に分かれる
         NSInteger monthOfTheDate = [[[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:aDate] month];
         
-        [calendars addObject:[[CalendarLogic alloc] initWithDate:aDate isDifferentMonth:month != monthOfTheDate AnyPlans:isAnyPlans]];
+        [calendars addObject:[[CalendarLogic alloc] initWithDate:aDate isDifferentMonth:month != monthOfTheDate AnyPlans:AreAnyPlans]];
     }
     
     return calendars;
 }
 
-- (instancetype)initWithDate:(NSDate *)date isDifferentMonth:(BOOL)isDifferentMonth AnyPlans:(BOOL)isAnyPlans{
+- (instancetype)initWithDate:(NSDate *)date isDifferentMonth:(BOOL)isDifferentMonth AnyPlans:(BOOL)AreAnyPlans{
     if (self = [super init]) {
         self.aDate = date;
         
         //今月の日付 = 0 , それ以外の日付 = 1
         self.isDifferentMonth = isDifferentMonth;
-        self.isAnyPlans = isAnyPlans;
+        self.AreAnyPlans = AreAnyPlans;
     }
     return self;
 }

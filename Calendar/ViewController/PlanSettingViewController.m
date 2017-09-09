@@ -22,9 +22,9 @@
 @interface PlanSettingViewController ()<UITableViewDelegate,PlanDataProviderDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *settingTableView;
 @property (nonatomic) PlanDataProvider *itemProvider;
-@property (nonatomic,strong) UIDatePicker *dp;
-@property (nonatomic,strong) Plan *plan;
-@property (nonatomic,strong) NSDate *endDate;
+@property (strong, nonatomic) UIDatePicker *dp;
+@property (strong, nonatomic) Plan *plan;
+@property (strong, nonatomic) NSDate *endDate;
 - (IBAction)tapResisterButton:(id)sender;
 
 @end
@@ -90,8 +90,7 @@
     NSDate *date = self.selectedHour.aDate;
     self.itemProvider.chosenDate = date;
     
-    
-    }
+}
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -128,13 +127,12 @@
 }
 -(void)tapAddButton{
     
-    //ScheduleManager *manager = [[ScheduleManager alloc]init];
     self.plan = [[Plan alloc]init];
     self.plan = self.itemProvider.plan;
     self.plan.endTime = self.endDate;
     self.plan.startTime = self.itemProvider.chosenDate;
-    BOOL didFillText = [self checkText];
-    if (didFillText){
+    BOOL didFillTextField = [self checkText];
+    if (didFillTextField){
         ScheduleManager *manager = [[ScheduleManager alloc]init];
         [manager addNewPlan:self.plan];
     }
@@ -174,19 +172,18 @@
         return NO;
     }
     
-//    if([self.plan.strEndTime length] == 0){
-//        
-//        [AlertController validateText:self
-//                          titleString:EndTimeEmpty
-//                        messageString:@""
-//                           actionFunc:^(UIAlertAction *alertAction){
-//                           }
-//         ];
-//        return NO;
-//    }
+    if([self.plan.strEndTime length] == 0){
+        
+        [AlertController validateText:self
+                          titleString:EndTimeEmpty
+                        messageString:@""
+                           actionFunc:^(UIAlertAction *alertAction){
+                           }
+         ];
+        return NO;
+    }
     return YES;
 }
-
 -(void)customizeDatePickerView{
 
 //self.datePickerView.datePicker.minuteInterval = 30;

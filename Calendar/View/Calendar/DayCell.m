@@ -40,6 +40,8 @@
 
 -(void)setUpDaysOfWeek:(NSInteger)row{   
     self.dayLabel.text = [self.monthName objectAtIndex:row] ;
+    [self.dayLabel setTextAlignment:NSTextAlignmentCenter];
+    self.planLabel.text = @"";
     
     switch (row) {
         case Sunday:
@@ -61,14 +63,16 @@
     
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = @"d";
-    
+    [self.dayLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.planLabel setTextAlignment:NSTextAlignmentCenter];
+
     self.dayLabel.text = [calendarLogic.aDate dateStringWithFormat:formatter.dateFormat];
-   // self.planLabel.text = [calendarLogic.aDate compareDate];
     if (calendarLogic.isDifferentMonth) {
         self.dayLabel.textColor = [UIColor lightGrayColor];
+        self.planLabel.text = @"";
         return;
     }
-    if (calendarLogic.isAnyPlans){
+    if (calendarLogic.AreAnyPlans && !calendarLogic.isDifferentMonth){
         self.planLabel.text = @"●";
         
     }else{

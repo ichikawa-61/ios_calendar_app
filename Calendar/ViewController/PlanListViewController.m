@@ -14,6 +14,7 @@
 #import "TimeLogic.h"
 #import "ScheduleManager.h"
 #import "Plan.h"
+#import "Hour.h"
 
 @interface PlanListViewController ()<UITableViewDelegate>
 
@@ -21,10 +22,13 @@
 @property (nonatomic) PlanListDataProvider *provider;
 @property (nonatomic) TimeLogic *logic;
 @property (strong, nonatomic) Plan *plan;
+@property (strong, nonatomic) ScheduleManager *scheduleManager;
 
 @end
 
 @implementation PlanListViewController
+
+#pragma mark lifeCycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,13 +40,8 @@
     self.scheduleTableView.delegate = self;
     self.scheduleTableView.dataSource = self.provider;
     
-    self.logic = [[TimeLogic alloc]init];
-    self.provider.timeArray = [[NSMutableArray alloc]init];
-    
-    NSMutableArray *array =  [[NSMutableArray alloc]init];
-    array = [self.logic setTimeLine:self.selectedDate];
-    self.provider.timeArray = array;
-    
+    self.scheduleManager = [[ScheduleManager alloc]init];
+
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc]
                                   initWithTitle:@"<戻る"
                                   style:UIBarButtonItemStylePlain
@@ -59,6 +58,16 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+
+    
+    [self updateTableData];
+    [self.scheduleTableView reloadData];
+}
+
+
+#pragma mark UITableViewDelegate
+
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 65;
 }
@@ -69,13 +78,26 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PlanSetting" bundle:[NSBundle mainBundle]];
     PlanSettingViewController *thirdVC = [storyboard instantiateInitialViewController];
-    //thirdVC.selectedHour.aDate =
     
+    Hour *hour = [self.provider.timeArray objectAtIndex:indexPath.row];
     thirdVC.selectedHour = [[CalendarLogic alloc]init];
-    thirdVC.selectedHour.aDate = [self.provider.timeArray objectAtIndex:indexPath.row];
+    thirdVC.selectedHour.aDate = hour.anHour;
     
     [self.navigationController pushViewController:thirdVC animated:true];
 
+
+}
+
+# pragma private method
+
+-(void)updateTableData{
+    
+    self.logic = [[TimeLogic alloc]init];
+    self.provider.timeArray = [[NSMutableArray alloc]init];
+    
+    NSMutableArray<Hour*> *array =  [[NSMutableArray alloc]init];
+    array = [self.logic setTimeLine:self.selectedDate];
+    self.provider.timeArray = array;
 
 }
 

@@ -53,12 +53,10 @@
     
     NSString *sql = @"INSERT INTO t_plan (plan_title, start_date, end_date, place, detail) VALUES (?,?,?,?,?)";
     
-    BOOL t = [db executeUpdate:sql,title,startDate,endDate,place,detail];
-    NSLog(@"%d",t);
+    [db executeUpdate:sql,title,startDate,endDate,place,detail];
     
     [db commit];
     [db close];
-    
 }
 
 -(NSMutableArray<Plan*>*)showPlanList{
@@ -81,8 +79,28 @@
         [list addObject:plan];
     }
     [db close];
-    return list;
+    return list;    
+}
+
+-(Plan*)showThePlan:(NSDate*)date{
+
+    Plan* plan = [[Plan alloc] init];
+    FMDatabase *db = [self getConnection];
+    NSString *sqlite = @"SELECT* FROM t_plan WHERE start_date = ?";
+    [db open];
+    FMResultSet* results = [db executeQuery:sqlite,date];
+    while ([results next]){
+        
+        plan.planId       = [results intForColumn:@"plan_id"];
+        plan.planTitle    = [results stringForColumn:@"plan_title"];
+        plan.startTime    = [results dateForColumn:@"start_date"];
+        plan.endTime      = [results dateForColumn:@"end_date"];
+        plan.place        = [results stringForColumn:@"place"];
+        plan.detail       = [results stringForColumn:@"detail"];
+    }
     
+    [db close];
+    return plan;
 }
 
 

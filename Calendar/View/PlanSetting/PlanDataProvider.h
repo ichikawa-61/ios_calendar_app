@@ -40,4 +40,12 @@ typedef NS_ENUM(NSInteger, PlanDataProviderRow) {
     
 };
 
+typedef NS_ENUM(NSInteger, PlanDataTextFieldTag) {
+    
+    TEXT_TITLE = 1,
+    TEXT_PLACE,
+    TEXT_END_TIME
+    
+};
+
 @end
